@@ -1,5 +1,7 @@
 package keyone.keytwo.lesson1_2kotlin;
 
+import android.view.View;
+
 public class JavaDataClass {
 
     private String field1;
@@ -7,6 +9,13 @@ public class JavaDataClass {
     private String field3;
     private String field4;
     private String field5;
+
+    View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 
     public JavaDataClass() {
         this.field1 = field1;
@@ -20,18 +29,25 @@ public class JavaDataClass {
     // крпируем метод copy
     private JavaDataClass copy (JavaDataClass javaDataClass) {
         JavaDataClass newJavaDataClass = new JavaDataClass();
+        JavaSingleton.getInstance().field1 = "hjh";
+        KotlinSingleton.INSTANCE.setField1("hjh");
+
+
+
+
         newJavaDataClass.field1 = field1;
         newJavaDataClass.field2 = field2;
         newJavaDataClass.field3 = field3;
         newJavaDataClass.field4 = field4;
         newJavaDataClass.field5 = field5;
         return newJavaDataClass;
+
 }
 
 
     @Override
     public String toString() {
-        return "JavaDataClass{" +
+        return "JavaDataClass{" + JavaSingleton.getInstance().field1+ KotlinSingleton.INSTANCE.getField1()+
                 "field1='" + field1 + '\'' +
                 ", field2='" + field2 + '\'' +
                 ", field3='" + field3 + '\'' +
